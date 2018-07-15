@@ -1,0 +1,28 @@
+.item-management{
+    .nav-menu{
+        height: 50px;
+        background-color: white;
+        border-bottom: 1px solid #D8D8D8;
+        .nav-menu-inner{
+            height: 100%;
+            padding: 0px 20px;
+            .n-menu{
+                height: 100%;
+                padding: 0px 20px;
+                cursor: pointer;
+                font-size: 1em;
+                &.active{
+                    border-bottom: 3px solid #4eb46b;
+                }
+                a{
+                    text-decoration: none;
+                    color: #6b6b6b;
+                }
+            }
+        }
+    }
+    .main-content{
+        margin: 40px 20px;
+        background-color: white;
+    }
+}

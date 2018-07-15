@@ -1,0 +1,27 @@
+<div class="coeliac-table" fxLayout="column">
+  <div class="table-data" mdl-shadow="2" fxLayout="column">
+    <div class="search-box" fxLayout="row" fxLayoutAlign="end center">
+      <div class="search" fxLayout="row">
+        <div class="box" fxFlex><input type="text" [(ngModel)]="searchValue" (input)="filterData(searchValue)" placeholder="Search..." /></div>
+        <div class="btn" fxFlex="15" fxLayoutAlign="center center"><mdl-icon>search</mdl-icon></div>
+      </div>
+    </div>
+    <div class="data-box" fxLayout="column">
+      <div class="header" fxLayout="row">
+        <div *ngFor="let field of fields" fxFlexAlign="center" [fxFlex]="field.size">{{field.name}}</div>
+      </div>
+      <div class="data" fxLayout="column">
+        <div class="list" fxLayout="row" *ngFor="let data of filtered; let i = index" (click)="rowSelect(data)">
+          <div *ngFor="let field of fields" fxFlexAlign="center" [fxFlex]="field.size">{{field.field === 'i' ? i+1 : data[field.field]}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-pagination" fxLayout="row" fxLayoutAlign="end center">
+    <div class="pagination" fxLayout="row">
+      <button class="prev-btn" [disabled]="!pagiPrevBtn" (click)="goPagination('1')">Privious</button>
+      <button class="page-btn" [class.active]="currentPage===i" *ngFor="let i of pageArr" (click)="goPage(i)">{{i}}</button>
+      <button class="next-btn" [disabled]="!pagiNextBtn" (click)="goPagination('2')">Next</button>
+    </div>
+  </div>
+</div>

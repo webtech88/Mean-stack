@@ -1,0 +1,79 @@
+<div class="reset-card" [mdl-shadow]="16">
+  <div class="card-title" [class.no-pad]="loading">
+    <mdl-progress [indeterminate]="true" *ngIf="loading"></mdl-progress>
+    <img class="vista-logo" src="/assets/img/coeliac-logo.png" alt="Coeliac logo" />
+  </div>
+  <div class="card-body"
+    (keydown.enter)="submitForm()"
+    *ngIf="!confirmationCode">
+    <mdl-textfield
+        [hidden]="emailSent"
+        type="text"
+        label="Email"
+        floating-label
+        [class.is-invalid]="email.touched && email.invalid"
+        error-msg="Please enter a valid email"
+        disableNativeValidityChecking
+        [formControl]="email">
+    </mdl-textfield>
+    <p class="success-caption" [hidden]="!emailSent">
+      An email has been sent to your address. Please follow the link in order to
+      reset your password.
+    </p>
+    <p class="resend-caption" [hidden]="!emailSent">
+      Didn't get the email ?
+    </p>
+    <p class="error-message">
+      {{errorMessage}}
+    </p>
+    <button
+      [class.resend-button]="emailSent"
+      mdl-button
+      mdl-ripple
+      [disabled]="email.touched && email.invalid"
+      (click)="submitForm()">
+        {{ emailSent ? 'Resend' : 'Reset password' }}
+    </button>
+  </div>
+  <div class="card-body" *ngIf="confirmationCode">
+    <form
+      [formGroup]="resetForm" novalidate
+      (keydown.enter)="submitConfirmForm()"
+      [hidden]="emailSent">
+      <mdl-textfield
+          type="password"
+          label="New password"
+          floating-label
+          [class.is-invalid]="password.touched && password.invalid"
+          error-msg="Password field is required"
+          disableNativeValidityChecking
+          formControlName="password">
+      </mdl-textfield>
+      <mdl-textfield
+          type="password"
+          label="Confirm Password"
+          floating-label
+          [class.is-invalid]="confirmPassword.touched && resetForm.invalid"
+          error-msg="Passwords did not match"
+          disableNativeValidityChecking
+          formControlName="confirmPassword">
+      </mdl-textfield>
+      <p class="error-message">
+        {{errorMessage}}
+      </p>
+      <button
+        [hidden]="emailSent"
+        mdl-button
+        mdl-ripple
+        class="reset-action-button"
+        [disabled]="resetForm.touched && resetForm.invalid"
+        (click)="submitConfirmForm()">
+          Reset password
+      </button>
+    </form>
+    <p class="success-caption" [hidden]="!emailSent">
+      We have successfully updated your password. Please click
+      <a href="#" [routerLink]="['../../login']">here</a> and sign-in with your new password.
+    </p>
+  </div>
+</div>

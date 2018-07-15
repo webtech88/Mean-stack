@@ -1,0 +1,22 @@
+.reset-card {
+  .card-body {
+    .success-caption {
+      color: rgba(0, 0, 0, .63);
+      font-size: 1.2rem;
+      line-height: 1.62rem;
+    }
+    .resend-caption {
+      color: rgb(255,64,129);
+      font-size: 1.2rem;
+    }
+    .resend-button {
+      margin: 0;
+    }
+    .reset-action-button {
+      background-color: #ee4068;
+      &[disabled] {
+        background-color: rgba(0,0,0, 0.12);
+      }
+    }
+  }
+}

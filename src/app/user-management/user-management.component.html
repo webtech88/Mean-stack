@@ -1,0 +1,17 @@
+<div class="user-manangement">
+    <app-modal [showModal]="showModal" (closeModal)="modalClosed()">
+        <app-add-user (closeModal)="modalClosed($event)" [isEdit]="isEdit" [user]="selectedUser" fxLayoutAlign="center center"></app-add-user>
+    </app-modal>
+    <app-coeliac-table 
+        [fields]="fields"
+        [datas]="datas"
+        [dataDisplayNumber]="dataDisplayNumber"
+        [totalDataNum]="totalDN"
+        (sendDataEmit)="selectUserEvent($event)"
+        (goPageEmit)="goPageForLoadData($event)">
+    </app-coeliac-table>
+
+    <mdl-button mdl-button-type="fab" class="add-user" mdl-colored="accent" mdl-ripple mdl-shadow="8" (click)="addUser()">
+        <mdl-icon>add</mdl-icon>
+    </mdl-button>
+</div>

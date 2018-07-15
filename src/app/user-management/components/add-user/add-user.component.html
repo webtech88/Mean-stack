@@ -1,0 +1,64 @@
+<div class="add-user-container"  fxLayout="column" mdl-shadow="8">
+  <div class="modal-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <span class="title">ADD USER</span>
+    <span class="btn"><mdl-icon (click)="destroy()" class="close-button">close</mdl-icon></span>
+  </div>
+  <div class="modal-body" *ngIf="user">
+    <form [formGroup]="userForm" novalidate>
+    <div class="row" >
+        <div class="col">
+          <div class="bold-input">
+            <label>NAME</label>
+            <input type="text" [formControl]="vName" [(ngModel)]="user.name">
+            <p
+              class="error-message"
+              [class.visible]="vName.invalid && vName.touched">
+              Please enter a valid name
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="bold-input">
+            <label>BUSINESS NAME</label>
+            <input type="text" [formControl]="vBusinessName" [(ngModel)]="user.businessName">
+            <p
+              class="error-message"
+              [class.visible]="vBusinessName.invalid && vBusinessName.touched">
+              Please enter a valid business name
+            </p>
+          </div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col">
+          <div class="bold-input">
+            <label>EMAILL</label>
+            <input type="text" [formControl]="vEmail" [(ngModel)]="user.email">
+            <p
+              class="error-message"
+              [class.visible]="vEmail.invalid && vEmail.touched">
+              Please enter a valid email
+            </p>
+          </div>
+        </div>
+        <div class="col" [hidden]="isEdit">
+          <div class="bold-input">
+            <label>PASSWORD</label>
+            <input type="text" [formControl]="vPassword" [(ngModel)]="user.password">
+            <p
+              class="error-message"
+              [class.visible]="vPassword.invalid && vPassword.touched">
+              Please enter a valid password
+            </p>
+          </div>
+        </div>
+    </div>
+    </form>
+    <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="red-color">{{errorMessage}}</span>
+      <span class="">
+        <button mdl-button mdl-ripple class="save-button" [disabled]="!userForm.valid" (click)="updateUser()">Save</button>
+      </span>
+    </div>
+  </div>
+</div>

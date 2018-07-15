@@ -1,0 +1,28 @@
+<div class="dashboard" fxLayout="column">
+  <div class="app-header" fxLayout="row">
+      <div class="app-logo" fxFlex="20">
+        <img class="vista-logo" src="/assets/img/coeliac-logo.png" alt="Coeliac logo" />
+      </div>
+      <div class="menu-name" fxFlex fxLayoutAlign="start center">{{menuTitle}}</div>
+  </div>
+  <div fxLayout="row" fxFlex>
+    <div class="drawer" fxFlex="20" fxFill>
+      <div class="menus" fxLayout="column">
+        <div class="l-menu" [routerLink]="route.path" [class.active]="route.active" *ngFor="let route of routes" (click)="selectMenu(route)" fxLayout="row" fxLayoutAlign="start center">
+          <a fxFlex fxLayoutAlign="start center" >
+            <mdl-icon>{{route.icon}}</mdl-icon> <b>{{route.link}}</b>
+          </a>
+        </div>
+
+        <div class="l-menu" fxLayout="row" fxLayoutAlign="start center">
+          <a fxFlex fxLayoutAlign="start center" routerLink="/" (click)="logout()">
+            <mdl-icon>exit_to_app</mdl-icon> <b>Logout</b>
+          </a>
+        </div>      
+      </div>
+    </div>
+
+    <div fxFlex fxFill class="main-container"><router-outlet></router-outlet></div>
+
+  </div>
+</div>

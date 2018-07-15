@@ -1,0 +1,19 @@
+<div class="navbar" [mdl-shadow]="2">
+  <img src="/assets/img/lv-logo-nav.png" alt="LittleVista">
+  {{options.title || title}}
+  <div class="nav-links" #links>
+    <ul [hidden]="isOverflowing">
+      <li
+        routerLinkActive="active-route"
+        *ngFor="let route of options.routes"
+        [routerLink]="route.path">
+          {{route.link}}
+      </li>
+    </ul>
+    <ul [hidden]="!isOverflowing">
+      <li class="active-route">
+        Navigation
+      </li>
+    </ul>
+  </div>
+</div>

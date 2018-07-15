@@ -1,0 +1,238 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~angular2-mdl/scss/color-definitions';
+@import '~angular2-mdl/scss/material-design-lite';
+
+@import '~@angular2-mdl-ext/popover/popover';
+@import '~@angular2-mdl-ext/select/select';
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  float: left;
+}
+
+
+.mdl-layout__drawer-button {
+  width: 70px;
+  height: 70px;
+  margin: 0px;
+  background-color: #40b15e;
+  color: #fff;
+  .material-icons{
+    line-height: 70px;
+    font-size: 1.5em;
+  }
+}
+
+/* Main Content */
+.layout-content {
+  padding: 15px;
+  width: 100%;
+  overflow-y: scroll;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+
+/* Pad content with navbar  */
+.has-navbar ~ .layout-content {
+  height: calc(100vh - 70px);
+}
+/* Pad content with navbar-small */
+.has-navbar-small + .layout-content {
+  height: calc(100vh - 112px);
+}
+
+/*
+ * Modal Content
+ */
+.simple-modal {
+  position: relative;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 37px 30px 15px 30px;
+  max-width: 430px;
+  min-width: 350px;
+  border-radius: 5px;
+  background-color: white;
+
+  .title {
+    color: #000;
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .error-message {
+    color: #E53935;
+  }
+
+  .save-button {
+    button {
+      background-color: #96e1de;
+      color: #5b5b5b;
+    }
+
+    mdl-spinner {
+      vertical-align: middle;
+    }
+  }
+
+  mdl-icon.close-button {
+    max-width: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+/* Bypassing ViewEncapsulation */
+app-login-card, app-register-card , app-reset-card{
+  .login-card, .register-card, .reset-card {
+    margin: auto;
+    background-color: #eeeeef;
+    min-width: 265px;
+    max-width: 330px;
+    border-radius: 5px;
+    .vista-logo {
+      max-width: 10rem;
+    }
+    .card-title {
+      display: block;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      text-align: center;
+      overflow: hidden;
+      padding-top: 4px;
+
+      &.no-pad {
+        padding-top: 0;
+      }
+      mdl-progress {
+        width: auto;
+      }
+      img {
+        max-width: 75%;
+        margin: 30px auto;
+      }
+    }
+    .card-body {
+      padding: 40px;
+      padding-top: 0;
+      text-align: center;
+      mdl-textfield {
+        width: 100%;
+      }
+      .error-message {
+        margin: 0;
+        color: #E53935;
+      }
+      .mdl-textfield {
+        &.is-focused label, &.is-dirty label {
+          padding-left: 0;
+        }
+        label {
+          padding-left: 10px;
+          color: #8e8e8e;
+        }
+      }
+      .mdl-textfield__input {
+        background-color: #fff;
+        border-bottom: 2px solid #7eddd7;
+      }
+    }
+    .card-additional, .card-body {
+      button {
+        width: 100%;
+        margin-top: 30px;
+        padding: 0;
+        background-color: #40b15e;
+        color: #fff;
+        font-weight: bold;
+
+        text-transform: none;
+      }
+    }
+
+    .card-additional {
+      margin-top: 30px;
+      p {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #8e8e8e;
+      }
+      button {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+/* Subventions ECCE Modal */
+app-ecce-modal {
+  .start-date {
+    .mdl-textfield--floating-label .mdl-textfield__label {
+      color: #fff;
+
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+/* Helper used in ECCE Modal and Fee Structure Modal */
+mdl-textfield.with-currency {
+  input {
+    padding: 4px 0 4px 16px;
+    box-sizing: border-box;
+  }
+  &.euro {
+    &::before {
+      content: '€';
+      position: absolute;
+      line-height: 1.4em;
+      font-size: 1.2em;
+    }
+  }
+}
+
+/* Temporary solution for Fee Structures */
+.custom-icon-toggle {
+  &.mdl-icon-toggle.is-checked .mdl-icon-toggle__label {
+    color: #4a8446;
+  }
+  .mdl-icon-toggle__label {
+    color: #fff;
+    &::after {
+      content: ' ';
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 3px solid #40b15e;
+      position: absolute;
+      left: 4px;
+      top: 4px;
+    }
+  }
+}
+.custom-mdl-select {
+  .mdl-textfield {
+    padding: 0;
+    width: 100%;
+  }
+}
+.apply-fee {
+  .custom-mdl-checkbox {
+    &.mdl-checkbox.is-checked .mdl-checkbox__box-outline {
+      border-color: #6dc28a;
+    }
+    &.mdl-checkbox.is-checked .mdl-checkbox__tick-outline {
+      background: #6dc28a;
+    }
+  }
+}

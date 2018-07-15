@@ -1,0 +1,47 @@
+<div class="login-card" [mdl-shadow]="16">
+  <div class="card-title" [class.no-pad]="loading">
+    <mdl-progress [indeterminate]="true" *ngIf="loading"></mdl-progress>
+    <img class="vista-logo" src="/assets/img/coeliac-logo.png" alt="Coeliac logo" />
+  </div>
+  <div class="card-body" (keydown.enter)="login()" [class.has-error]="errorMessage">
+    <form [formGroup]="loginForm" novalidate>
+      <mdl-textfield
+        type="text"
+        label="Email"
+        floating-label
+        disableNativeValidityChecking
+        [class.is-invalid]="email.touched && email.invalid"
+        error-msg="Email is required"
+        formControlName="email">
+      </mdl-textfield>
+      <mdl-textfield
+        type="password"
+        label="Password"
+        floating-label
+        disableNativeValidityChecking
+        [class.is-invalid]="password.touched && password.invalid"
+        error-msg="Password is required"
+        formControlName="password">
+      </mdl-textfield>
+    </form>
+    <p class="error-message">
+      {{errorMessage}}
+    </p>
+    <button mdl-button mdl-ripple (click)="login()">
+      Login
+    </button>
+    <mdl-button
+      [routerLink]="['../reset-password']"
+      class="forgot-password"
+      *ngIf="errorMessage">
+      Forgot Password ?
+    </mdl-button>
+
+    <div class="card-additional">
+      <p>Don't have an account yet?</p>
+      <button mdl-button mdl-ripple [routerLink]="['../register']">
+        Sign up for free
+      </button>
+    </div>
+  </div>
+</div>

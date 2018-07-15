@@ -1,0 +1,57 @@
+.searchbar {
+  position: relative;
+  width: 100%;
+  padding: 15px 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  &.compact {
+    padding: 15px 0;
+    mdl-icon {
+      top: 18px;
+      right: 0;
+    }
+    &.active mdl-icon.search-button {
+      right: 230px;
+    }
+    mdl-textfield {
+      padding: 0;
+    }
+  }
+  .title {
+    flex: 1;
+    line-height: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4e4f4e;
+  }
+  mdl-icon {
+    position: absolute;
+    right: 30px;
+    top: 35px;
+    transition: all .5s ease;
+    cursor: pointer;
+    -webkit-user-select: none;
+    max-width: 24px;
+    will-change: right;
+  }
+  .search-button {
+    z-index: 1;
+  }
+  .clear-button, mdl-textfield {
+    opacity: 0;
+    visibility: hidden;
+    will-change: opacity;
+    transition: all 2s ease;
+    width: 230px;
+  }
+  &.active {
+    mdl-icon.search-button {
+      right: 260px;
+    }
+    .clear-button, mdl-textfield {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
